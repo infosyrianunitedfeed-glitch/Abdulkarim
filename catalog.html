@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الكتالوج العلمي المتقدم - السورية المتحدة للأعلاف</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #e8f0ed 0%, #d4e4dc 100%);
+            color: #1a3a2e;
+            line-height: 1.7;
+            padding: 40px 20px;
+        }
+        
+        .catalog {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
+            border-radius: 30px;
+            overflow: hidden;
+        }
+        
+        /* Cover Page - Premium */
+        .cover {
+            background: linear-gradient(135deg, #0a3a28 0%, #1a6a48 50%, #0a3a28 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1%, transparent 1%);
+            background-size: 50px 50px;
+            animation: shimmer 20s linear infinite;
+        }
+        
+        @keyframes shimmer {
+            from { transform: translate(0, 0); }
+            to { transform: translate(50px, 50px); }
+        }
+        
+        .cover-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-icon {
+            font-size: 5rem;
+            margin-bottom: 1.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .cover h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+        
+        .cover h1 span {
+            color: #ffd966;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .cover h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: rgba(255,217,102,0.3);
+            border-radius: 10px;
+        }
+        
+        .cover p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .cert-badge {
+            display: inline-flex;
+            gap: 20px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .cert-badge span {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(5px);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+        }
+        
+        /* Content */
+        .content {
+            padding: 50px;
+        }
+        
+        /* Section Styling */
+        .section {
+            margin-bottom: 60px;
+            page-break-inside: avoid;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            color: #0a3a28;
+            border-right: 5px solid #ff8c42;
+            padding-right: 20px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .section-subtitle {
+            color: #ff8c42;
+            font-size: 1.1rem;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            padding-right: 25px;
+        }
+        
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #f8faf8, #f0f5f0);
+            padding: 25px;
+            text-align: center;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ff8c42;
+        }
+        
+        /* Products Premium */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card-premium {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+            border: 1px solid #e8f0e8;
+        }
+        
+        .product-card-premium:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .product-header {
+            background: linear-gradient(135deg, #0a3a28, #1a6a48);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .product-header i {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .product-header h3 {
+            font-size: 1.6rem;
+        }
+        
+        .product-body {
+            padding: 25px;
+        }
+        
+        .specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 15px;
+            margin: 15px 0;
+        }
+        
+        .spec-item {
+            text-align: center;
+        }
+        
+        .spec-label {
+            font-size: 0.8rem;
+            color: #666;
+        }
+        
+        .spec-value {
+            font-weight: 700;
+            color: #0a3a28;
+            font-size: 1.1rem;
+        }
+        
+        .amino-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+        
+        .amino-tag {
+            background: #e8f0e8;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+        }
+        
+        /* Scientific Tables */
+        .scientific-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .scientific-table th {
+            background: #0a3a28;
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+        }
+        
+        .scientific-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e8e0;
+        }
+        
+        .scientific-table tr:hover {
+            background: #f8faf8;
+        }
+        
+        /* Feeding Phases */
+        .phase-timeline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .phase-card {
+            flex: 1;
+            min-width: 180px;
+            background: linear-gradient(135deg, #f8faf8, #f0f5f0);
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .phase-card.active {
+            background: linear-gradient(135deg, #ff8c42, #e6732e);
+            color: white;
+        }
+        
+        .phase-weight {
+            font-size: 1.2rem;
+            font-weight: 800;
+        }
+        
+        /* Water Quality Guide */
+        .water-quality-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .quality-card {
+            background: #f8faf8;
+            padding: 20px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .quality-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #ff8c42;
+        }
+        
+        /* Disease Prevention */
+        .disease-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .disease-card {
+            background: #fffaf5;
+            padding: 20px;
+            border-radius: 20px;
+            border-right: 4px solid #ff8c42;
+        }
+        
+        /* Growth Chart */
+        .growth-chart {
+            background: #f8faf8;
+            padding: 25px;
+            border-radius: 20px;
+            margin: 20px 0;
+        }
+        
+        .chart-bar {
+            margin: 15px 0;
+        }
+        
+        .chart-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+        
+        .bar-fill {
+            height: 25px;
+            background: linear-gradient(90deg, #0a3a28, #ff8c42);
+            border-radius: 12px;
+            transition: width 1s ease;
+        }
+        
+        /* Economic Analysis */
+        .economic-box {
+            background: linear-gradient(135deg, #0a3a28, #1a6a48);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+        }
+        
+        .economic-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ffd966;
+        }
+        
+        /* Contact Premium */
+        .contact-premium {
+            background: linear-gradient(135deg, #f8faf8, #f0f5f0);
+            padding: 30px;
+            border-radius: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+        
+        .contact-info-premium p {
+            margin: 15px 0;
+        }
+        
+        .qr-code {
+            text-align: center;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+        }
+        
+        /* Footer */
+        .footer-premium {
+            background: #0a3a28;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+        
+        .print-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff8c42, #e6732e);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+        
+        .print-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255,140,66,0.4);
+        }
+        
+        @media print {
+            body { background: white; padding: 0; }
+            .print-btn { display: none; }
+            .catalog { box-shadow: none; border-radius: 0; }
+            .product-card-premium { break-inside: avoid; }
+        }
+        
+        @media (max-width: 768px) {
+            .content { padding: 25px; }
+            .cover h1 { font-size: 2rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            .contact-premium { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<button class="print-btn" onclick="window.print()">
+    <i class="fas fa-print"></i> طباعة الكتالوج
+</button>
+
+<div class="catalog">
+    <!-- Cover Page -->
+    <div class="cover">
+        <div class="cover-content">
+            <div class="logo-icon">
+                <i class="fas fa-fish"></i> <i class="fas fa-leaf"></i>
+            </div>
+            <h1>السورية المتحدة <span>للأعلاف</span></h1>
+            <p>الكتالوج العلمي المتقدم | الدليل التقني لتغذية الأسماك</p>
+            <div class="cert-badge">
+                <span><i class="fas fa-certificate"></i> ISO 22000</span>
+                <span><i class="fas fa-flask"></i> HACCP Certified</span>
+                <span><i class="fas fa-trophy"></i> جودة عالية</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="content">
+        <!-- Executive Summary -->
+        <div class="section">
+            <h2 class="section-title">ملخص تنفيذي</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">200+</div><div>مزرعة شريكة</div></div>
+                <div class="stat-card"><div class="stat-number">10+</div><div>سنوات خبرة</div></div>
+                <div class="stat-card"><div class="stat-number">5,000+</div><div>طن سنوياً</div></div>
+                <div class="stat-card"><div class="stat-number">1.2-1.6</div><div>معدل FCR</div></div>
+            </div>
+            <p style="font-size: 1.05rem;">تقدم <strong>السورية المتحدة للأعلاف</strong> أحدث الحلول الغذائية للاستزراع السمكي، معتمدة على أحدث الأبحاث العلمية والتقنيات المتطورة في مجال تغذية الأسماك. يهدف هذا الكتالوج إلى تقديم دليل علمي شامل يساعد المربين على تحقيق أعلى إنتاجية بأقل التكاليف.</p>
+        </div>
+        
+        <!-- Advanced Products Section -->
+        <div class="section">
+            <h2 class="section-title">المنتجات المتطورة</h2>
+            <div class="section-subtitle">صيغ غذائية متخصصة لكل مرحلة عمرية</div>
+            
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card-premium">
+                    <div class="product-header">
+                        <i class="fas fa-baby-carriage"></i>
+                        <h3>علف البادئ</h3>
+                        <p>المرحلة الأولى - الزريعة</p>
+                    </div>
+                    <div class="product-body">
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">البروتين</div><div class="spec-value">45-48%</div></div>
+                            <div class="spec-item"><div class="spec-label">الدهون</div><div class="spec-value">12-15%</div></div>
+                            <div class="spec-item"><div class="spec-label">الألياف</div><div class="spec-value">&lt;3%</div></div>
+                            <div class="spec-item"><div class="spec-label">الرماد</div><div class="spec-value">&lt;12%</div></div>
+                        </div>
+                        <p><strong>المكونات الرئيسية:</strong> دقيق سمك عالي الجودة، كسب فول الصويا، جلوتين الذرة، زيت سمك، فيتامينات مذابة في الدهون.</p>
+                        <div class="amino-grid">
+                            <span class="amino-tag">ليسين 2.8%</span>
+                            <span class="amino-tag">ميثيونين 1.2%</span>
+                            <span class="amino-tag">ثرونين 1.5%</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <strong>المميزات العلمية:</strong> يحتوي على مسببات مناعة طبيعية (β-glucan) لتعزيز الجهاز المناعي للزريعة وتحسين نسبة البقاء على قيد الحياة.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card-premium">
+                    <div class="product-header">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>علف النمو</h3>
+                        <p>مرحلة التسمين - الأكثر مبيعاً</p>
+                    </div>
+                    <div class="product-body">
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">البروتين</div><div class="spec-value">32-38%</div></div>
+                            <div class="spec-item"><div class="spec-label">الدهون</div><div class="spec-value">6-8%</div></div>
+                            <div class="spec-item"><div class="spec-label">الألياف</div><div class="spec-value">&lt;5%</div></div>
+                            <div class="spec-item"><div class="spec-label">الطاقة</div><div class="spec-value">3200 كيلو كالوري/كجم</div></div>
+                        </div>
+                        <p><strong>المكونات الرئيسية:</strong> كسب فول الصويا المقشور، جلوتين الذرة، دقيق سمك، زيت نباتي، إنزيمات هاضمة.</p>
+                        <div class="amino-grid">
+                            <span class="amino-tag">إنزيمات فيتيز</span>
+                            <span class="amino-tag">بروبيوتيك</span>
+                            <span class="amino-tag">بريبايوتك</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <strong>المميزات العلمية:</strong> محسنات هضم (إنزيمات فيتيز) تزيد من امتصاص الفوسفور والعناصر الغذائية، مما يقلل التلوث البيئي ويحسن معدل التحويل الغذائي.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card-premium">
+                    <div class="product-header">
+                        <i class="fas fa-egg"></i>
+                        <h3>علف الأمهات</h3>
+                        <p>لتحسين جودة البيض والتفقيس</p>
+                    </div>
+                    <div class="product-body">
+                        <div class="specs-grid">
+                            <div class="spec-item"><div class="spec-label">البروتين</div><div class="spec-value">38-42%</div></div>
+                            <div class="spec-item"><div class="spec-label">الدهون</div><div class="spec-value">8-10%</div></div>
+                            <div class="spec-item"><div class="spec-label">أوميغا 3</div><div class="spec-value">1.5%</div></div>
+                            <div class="spec-item"><div class="spec-label">فيتامين E</div><div class="spec-value">200 مجم/كجم</div></div>
+                        </div>
+                        <p><strong>المكونات الرئيسية:</strong> دقيق سمك عالي الجودة، زيت سمك غني بأوميغا 3، مكملات فيتامينية معدنية.</p>
+                        <div class="amino-grid">
+                            <span class="amino-tag">أوميغا 3</span>
+                            <span class="amino-tag">أوميغا 6</span>
+                            <span class="amino-tag">فيتامين C</span>
+                            <span class="amino-tag">فيتامين E</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <strong>المميزات العلمية:</strong> مدعم بالأحماض الدهنية الأساسية وفيتامين E لتحسين جودة البيض ونسبة الفقس، وتقليل التشوهات في اليرقات.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scientific Feeding Guide -->
+        <div class="section">
+            <h2 class="section-title">الدليل العلمي للتغذية</h2>
+            
+            <div class="phase-timeline">
+                <div class="phase-card active">
+                    <div class="phase-weight">0-20 جم</div>
+                    <div>زريعة</div>
+                    <div style="font-size:0.8rem">5-6 وجبات</div>
+                    <div style="font-size:0.8rem">8-12% من الوزن</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-weight">20-100 جم</div>
+                    <div>إصبعيات</div>
+                    <div style="font-size:0.8rem">4 وجبات</div>
+                    <div style="font-size:0.8rem">5-7% من الوزن</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-weight">100-300 جم</div>
+                    <div>نمو مبكر</div>
+                    <div style="font-size:0.8rem">3-4 وجبات</div>
+                    <div style="font-size:0.8rem">3-5% من الوزن</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-weight">300-600 جم</div>
+                    <div>نمو متقدم</div>
+                    <div style="font-size:0.8rem">3 وجبات</div>
+                    <div style="font-size:0.8rem">2-3% من الوزن</div>
+                </div>
+                <div class="phase-card">
+                    <div class="phase-weight">600+ جم</div>
+                    <div>تسويق</div>
+                    <div style="font-size:0.8rem">2-3 وجبات</div>
+                    <div style="font-size:0.8rem">1.5-2% من الوزن</div>
+                </div>
+            </div>
+            
+            <table class="scientific-table">
+                <thead>
+                    <tr><th>المعامل</th><th>القيمة المثلى</th><th>الحد الأدنى</th><th>الحد الأقصى</th><th>التأثير على الإنتاج</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>درجة حرارة الماء</td><td>26-28°C</td><td>22°C</td><td>32°C</td><td>نقص 2°C يقلل النمو 20%</td></tr>
+                    <tr><td>الأكسجين المذاب</td><td>>5 mg/L</td><td>4 mg/L</td><td>-</td><td>أقل من 4 mg/L يسبب إجهاد ونفوق</td></tr>
+                    <tr><td>درجة الحموضة pH</td><td>7.0-8.0</td><td>6.5</td><td>8.5</td><td>تؤثر على امتصاص الغذاء</td></tr>
+                    <tr><td>الأمونيا NH₃</td><td><0.02 mg/L</td><td>-</td><td>0.1 mg/L</td><td>تسبب تلف الخياشيم والأنسجة</td></tr>
+                    <tr><td>النترات NO₃</td><td><50 mg/L</td><td>-</td><td>100 mg/L</td><td>تسبب إجهاد مزمن</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Water Quality Management -->
+        <div class="section">
+            <h2 class="section-title">إدارة جودة المياه</h2>
+            <div class="water-quality-grid">
+                <div class="quality-card"><i class="fas fa-temperature-high fa-2x" style="color:#ff8c42"></i><div class="quality-value">26-28°C</div><div>درجة حرارة مثلى للبلطي</div></div>
+                <div class="quality-card"><i class="fas fa-wind fa-2x" style="color:#ff8c42"></i><div class="quality-value">5-7 mg/L</div><div>الأكسجين المذاب المثالي</div></div>
+                <div class="quality-card"><i class="fas fa-flask fa-2x" style="color:#ff8c42"></i><div class="quality-value">7.0-8.0</div><div>pH مثالي للامتصاص</div></div>
+                <div class="quality-card"><i class="fas fa-droplet fa-2x" style="color:#ff8c42"></i><div class="quality-value">&lt;0.02 mg/L</div><div>الأمونيا السامة</div></div>
+            </div>
+            <div class="growth-chart">
+                <h3 style="margin-bottom: 20px;">تأثير جودة المياه على النمو</h3>
+                <div class="chart-bar"><div class="chart-label"><span>درجة حرارة مثلى (28°C)</span><span>نمو 100%</span></div><div class="bar-fill" style="width:100%"></div></div>
+                <div class="chart-bar"><div class="chart-label"><span>درجة حرارة منخفضة (22°C)</span><span>نمو 60%</span></div><div class="bar-fill" style="width:60%"></div></div>
+                <div class="chart-bar"><div class="chart-label"><span>أكسجين منخفض (3 mg/L)</span><span>نمو 40%</span></div><div class="bar-fill" style="width:40%"></div></div>
+                <div class="chart-bar"><div class="chart-label"><span>أمونيا مرتفعة (0.1 mg/L)</span><span>نمو 30%</span></div><div class="bar-fill" style="width:30%"></div></div>
+            </div>
+        </div>
+        
+        <!-- Disease Prevention -->
+        <div class="section">
+            <h2 class="section-title">الوقاية من الأمراض</h2>
+            <div class="disease-grid">
+                <div class="disease-card"><i class="fas fa-bacteria fa-2x" style="color:#ff8c42"></i><h3>الالتهاب البكتيري</h3><p>الوقاية: تحسين جودة المياه، إضافة البروبيوتيك للعلف، تقليل الكثافة السمكية.</p></div>
+                <div class="disease-card"><i class="fas fa-fish fa-2x" style="color:#ff8c42"></i><h3>طفيليات الخياشيم</h3><p>الوقاية: حمامات الماء المالح، مراقبة مستمرة للخياشيم، تجنب الإجهاد الحراري.</p></div>
+                <div class="disease-card"><i class="fas fa-virus fa-2x" style="color:#ff8c42"></i><h3>فيروسات الأسماك</h3><p>الوقاية: استخدام علف مدعم بالمناعة، عزل الأسماك المصابة، بروتوكولات صحية صارمة.</p></div>
+            </div>
+            <div style="background:#e8f0e8; padding:20px; border-radius:20px; margin-top:20px;">
+                <h3><i class="fas fa-syringe"></i> برنامج التحصين المقترح</h3>
+                <p>نوصي ببرنامج تحصين متكامل يشمل: فحص دوري كل 30 يوم، تحليل مياه أسبوعي، إضافة مكملات غذائية معززة للمناعة (فيتامين C 500 مجم/كجم علف) خلال فترات الإجهاد الحراري.</p>
+            </div>
+        </div>
+        
+        <!-- Economic Analysis -->
+        <div class="section">
+            <h2 class="section-title">التحليل الاقتصادي</h2>
+            <div class="economic-box">
+                <h3>معدل التحويل الغذائي (FCR)</h3>
+                <div class="economic-number">1.2 - 1.6</div>
+                <p>باستخدام أعلاف السورية المتحدة، يمكنك تحقيق معدل تحويل غذائي منخفض، مما يعني توفير كبير في التكاليف. كل 1.2 كجم علف تعطي 1 كجم لحم سمك.</p>
+                <div style="margin-top:20px; display:flex; gap:20px; justify-content:center; flex-wrap:wrap">
+                    <div><strong>تكلفة العلف:</strong><br>بتوفير 20%</div>
+                    <div><strong>فترة التسمين:</strong><br>أقصر بـ 15 يوم</div>
+                    <div><strong>العائد:</strong><br>زيادة 25%</div>
+                </div>
+            </div>
+            
+            <table class="scientific-table" style="margin-top:20px">
+                <thead><tr><th>المؤشر</th><th>مع منتجاتنا</th><th>المعدل السوقي</th><th>التوفير</th></tr></thead>
+                <tbody>
+                    <tr><td>معدل التحويل FCR</td><td>1.2-1.4</td><td>1.6-1.9</td><td>25-35%</td></tr>
+                    <tr><td>نسبة النفوق</td><td>&lt;5%</td><td>10-15%</td><td>50-60%</td></tr>
+                    <tr><td>فترة التسمين (300 جم)</td><td>6-7 أشهر</td><td>8-10 أشهر</td><td>20-30%</td></tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Research & Development -->
+        <div class="section">
+            <h2 class="section-title">البحث والتطوير</h2>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="color:#0a3a28"><i class="fas fa-flask"></i> أحدث التقنيات المستخدمة</h3>
+                    <ul style="margin-top:15px; padding-right:20px;">
+                        <li>✅ <strong>الإنزيمات الخارجية:</strong> تحسين هضم الفوسفور والبروتين بنسبة 15%</li>
+                        <li>✅ <strong>البروبيوتيك (Bacillus subtilis):</strong> تعزيز المناعة المعوية</li>
+                        <li>✅ <strong>البريبايوتك (FOS):</strong> تحسين البكتيريا النافعة في الأمعاء</li>
+                        <li>✅ <strong>الأحماض الأمينية البلورية:</strong> توازن مثالي للأحماض الأمينية</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="color:#0a3a28"><i class="fas fa-chart-bar"></i> نتائج التجارب الميدانية</h3>
+                    <div style="background:#e8f0e8; padding:15px; border-radius:15px; margin-top:15px;">
+                        <p>📊 <strong>تجربة على 50,000 سمكة بلطي:</strong></p>
+                        <p>✓ معدل نمو يومي: 2.5 جم/يوم</p>
+                        <p>✓ معدل تحويل: 1.35</p>
+                        <p>✓ نسبة نفوق: 3.2%</p>
+                        <p>✓ فترة التسويق: 195 يوم (وزن 550 جم)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Contact Premium -->
+        <div class="section">
+            <h2 class="section-title">تواصل مع فريق الخبراء</h2>
+            <div class="contact-premium">
+                <div class="contact-info-premium">
+                    <p><i class="fas fa-phone-alt"></i> <strong>الهاتف / واتساب:</strong> <a href="tel:0963993716837" style="direction:ltr">0963 993 716 837</a></p>
+                    <p><i class="fas fa-envelope"></i> <strong>قسم المبيعات:</strong> sales.syrianunitedfeed@gmail.com</p>
+                    <p><i class="fas fa-headset"></i> <strong>الدعم الفني:</strong> support.syrianunitedfeed@gmail.com</p>
+                    <p><i class="fas fa-flask"></i> <strong>الاستشارات العلمية:</strong> research.syrianunitedfeed@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> <strong>المقر الرئيسي:</strong> إدلب - سلقين</p>
+                    <p><i class="fas fa-clock"></i> <strong>ساعات العمل:</strong> السبت - الخميس 8 صباحاً - 6 مساءً</p>
+                </div>
+                <div class="qr-code">
+                    <i class="fas fa-qrcode fa-4x" style="color:#0a3a28"></i>
+                    <p>امسح للتواصل المباشر</p>
+                    <p style="font-size:0.8rem; margin-top:10px;">متوفر على واتساب</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer -->
+        <div class="footer-premium">
+            <p><strong>السورية المتحدة للأعلاف</strong> — شريكك العلمي لتحقيق أعلى إنتاجية</p>
+            <p style="margin-top:15px;">تطبق الشركة أحدث معايير الجودة العالمية ISO 22000 و HACCP</p>
+            <p>© 2025 جميع الحقوق محفوظة | الإصدار العلمي المتقدم 1.0</p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

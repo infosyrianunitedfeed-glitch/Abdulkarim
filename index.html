@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>السورية المتحدة للأعلاف | رائدة صناعة أعلاف الأسماك في سوريا</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-dark: #0A2F22;
+            --primary: #2D6A4F;
+            --primary-light: #40916C;
+            --accent: #F4A261;
+            --accent-dark: #E76F51;
+            --gray-bg: #F8F9FA;
+            --gray-light: #E9ECEF;
+            --gray: #6C757D;
+            --dark: #212529;
+            --white: #FFFFFF;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.1);
+            --shadow-lg: 0 16px 48px rgba(0,0,0,0.12);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        /* Dark Mode */
+        [data-theme="dark"] {
+            --primary-dark: #1F4A3A;
+            --primary: #40916C;
+            --gray-bg: #1A1E24;
+            --gray-light: #2A2F36;
+            --dark: #F8F9FA;
+            --white: #1E2429;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Inter', sans-serif;
+            background: var(--gray-bg);
+            color: var(--dark);
+            line-height: 1.6;
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--gray-light); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
+        
+        /* Navigation */
+        .navbar {
+            background: rgba(10, 47, 34, 0.95);
+            backdrop-filter: blur(12px);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            background: rgba(10, 47, 34, 0.98);
+            padding: 0.8rem 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        
+        .logo i { margin-left: 8px; color: var(--white); }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after,
+        .nav-links a.active::after { width: 100%; }
+        
+        .nav-links a:hover { color: var(--accent); }
+        
+        .dark-mode-toggle {
+            background: var(--gray-light);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--dark);
+        }
+        
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            z-index: 1001;
+            transition: width 0.1s;
+        }
+        
+        /* Hero with Video */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            overflow: hidden;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,47,34,0.85), rgba(45,106,79,0.75));
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.8s ease;
+        }
+        
+        .hero h1 span { color: var(--accent); }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+        
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: var(--white);
+            padding: 12px 32px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--white);
+            padding: 12px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(244,162,97,0.3);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        /* Trust Bar */
+        .trust-bar {
+            background: var(--white);
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+        
+        /* Sections */
+        .section {
+            padding: 80px 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            margin-bottom: 3rem;
+            color: var(--primary-dark);
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-dark));
+            margin: 1rem auto 0;
+            border-radius: 3px;
+        }
+        
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .product-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        
+        .product-content {
+            padding: 1.5rem;
+        }
+        
+        .product-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal.active { display: flex; }
+        
+        .modal-content {
+            background: var(--white);
+            max-width: 500px;
+            width: 90%;
+            border-radius: 20px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+        
+        /* Calculator */
+        .calculator {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .calc-input {
+            margin-bottom: 1rem;
+        }
+        
+        .calc-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .calc-input input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            background: var(--gray-bg);
+            color: var(--dark);
+        }
+        
+        .calc-result {
+            margin-top: 1.5rem;
+            padding: 1rem;
+            background: var(--primary);
+            color: var(--white);
+            border-radius: 12px;
+            text-align: center;
+        }
+        
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+        
+        .carousel-card {
+            min-width: 100%;
+            padding: 1rem;
+        }
+        
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            z-index: 10;
+        }
+        
+        .carousel-prev { left: 0; }
+        .carousel-next { right: 0; }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+            text-align: center;
+        }
+        
+        .testimonial-avatar {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 2rem;
+            color: var(--white);
+        }
+        
+        .stars { color: var(--accent); margin: 0.5rem 0; }
+        
+        /* Blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .blog-card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+        
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary-light), var(--primary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--white);
+        }
+        
+        .blog-content {
+            padding: 1.5rem;
+        }
+        
+        .blog-content h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+        
+        .read-more {
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--accent-dark);
+            transform: translateX(-5px);
+        }
+        
+        /* Blog Modal */
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .blog-modal-content {
+            background: var(--white);
+            max-width: 700px;
+            width: 90%;
+            border-radius: 25px;
+            padding: 2rem;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInUp 0.4s ease;
+        }
+        
+        .blog-modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: var(--transition);
+        }
+        
+        .blog-modal-close:hover { color: var(--accent); }
+        
+        /* Contact */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .contact-info p {
+            margin: 1rem 0;
+        }
+        
+        .contact-info a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+        
+        form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 1rem;
+            border: 2px solid var(--gray-light);
+            border-radius: 12px;
+            background: var(--gray-bg);
+            color: var(--dark);
+            font-family: inherit;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        /* FAQ Accordion */
+        .faq-item {
+            background: var(--white);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+        
+        .faq-question {
+            padding: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-weight: 600;
+            background: var(--white);
+        }
+        
+        .faq-answer {
+            padding: 0 1.2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            padding-bottom: 1.2rem;
+        }
+        
+        /* Bottom Bar for Mobile */
+        .bottom-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--primary-dark);
+            display: none;
+            justify-content: space-around;
+            padding: 0.8rem;
+            z-index: 999;
+        }
+        
+        .bottom-bar a {
+            color: var(--white);
+            text-align: center;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .bottom-bar { display: flex; }
+            .hero h1 { font-size: 1.8rem; }
+            .section { padding: 50px 20px; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .contact-container { grid-template-columns: 1fr; }
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="navbar" id="navbar">
+    <div class="navbar-content">
+        <div class="logo"><i class="fas fa-fish"></i> السورية المتحدة للأعلاف</div>
+        <ul class="nav-links">
+            <li><a href="#home">الرئيسية</a></li>
+            <li><a href="#about">عن الشركة</a></li>
+            <li><a href="#products">منتجاتنا</a></li>
+            <li><a href="#calculator">حاسبة العلف</a></li>
+            <li><a href="#blog">المدونة</a></li>
+            <li><a href="#contact">اتصل بنا</a></li>
+        </ul>
+        <button class="dark-mode-toggle" id="darkModeToggle"><i class="fas fa-moon"></i></button>
+    </div>
+</nav>
+
+<section id="home" class="hero">
+    <video class="hero-video" autoplay muted loop playsinline>
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-fish-swimming-in-clear-water-3283-large.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>السورية المتحدة للأعلاف<br><span>جودة تصنع الفرق</span></h1>
+        <p>أعلاف متكاملة غذائيًا، مصممة لظروف المزارع السمكية في سوريا. من الزريعة إلى التسويق، نحن شريكك في النجاح.</p>
+        <div class="btn-group">
+            <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})"><i class="fas fa-phone-alt"></i> تواصل معنا</button>
+            <button class="btn-secondary" onclick="alert('سيتم توفير الكتالوج قريباً')"><i class="fas fa-download"></i> تحميل الكتالوج</button>
+        </div>
+    </div>
+    <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+        <i class="fas fa-chevron-down fa-2x"></i>
+    </div>
+</section>
+
+<div class="trust-bar">
+    <div><div class="stat-number" id="stat1">200+</div><div>مزرعة تثق بنا</div></div>
+    <div><div class="stat-number" id="stat2">10+</div><div>سنوات خبرة</div></div>
+    <div><div class="stat-number" id="stat3">5000+</div><div>طن سنويًا</div></div>
+    <div><div class="stat-number" id="stat4">98%</div><div>رضا العملاء</div></div>
+</div>
+
+<section id="about" class="section">
+    <h2 class="section-title">من نحن؟</h2>
+    <p style="text-align: center; max-width: 800px; margin: 0 auto;">تأسست <strong>السورية المتحدة للأعلاف</strong> لتكون الصرح الوطني الأول في صناعة أعلاف الأسماك عالية الجودة. نمتلك مصنعًا مجهزًا بأحدث خطوط الإنتاج العالمية، ونعمل مع نخبة من خبراء التغذية والاستزراع السمكي.</p>
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-top: 2rem;">
+        <div class="btn-primary" style="background: var(--primary);"><i class="fas fa-chart-line"></i> تحسين النمو</div>
+        <div class="btn-primary" style="background: var(--primary);"><i class="fas fa-weight-hanging"></i> خفض معامل التحويل</div>
+        <div class="btn-primary" style="background: var(--primary);"><i class="fas fa-heartbeat"></i> تقليل النفوق</div>
+    </div>
+</section>
+
+<section id="products" class="section">
+    <h2 class="section-title">منتجاتنا</h2>
+    <div class="products-grid">
+        <div class="product-card" onclick="openProductModal('بادئ')">
+            <div class="product-image"><i class="fas fa-fish fa-3x"></i></div>
+            <div class="product-content">
+                <h3>علف البادئ</h3>
+                <p>للزريعة من أول يوم</p>
+                <span class="product-badge">بروتين 48%</span>
+            </div>
+        </div>
+        <div class="product-card" onclick="openProductModal('نمو')">
+            <div class="product-image"><i class="fas fa-water fa-3x"></i></div>
+            <div class="product-content">
+                <h3>علف النمو</h3>
+                <p>للتسمين السريع</p>
+                <span class="product-badge">الأكثر مبيعاً</span>
+            </div>
+        </div>
+        <div class="product-card" onclick="openProductModal('أمهات')">
+            <div class="product-image"><i class="fas fa-egg fa-3x"></i></div>
+            <div class="product-content">
+                <h3>علف الأمهات</h3>
+                <p>لتحسين جودة البيض</p>
+                <span class="product-badge">متخصص</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="calculator" class="section">
+    <h2 class="section-title">حاسبة العلف</h2>
+    <div class="calculator">
+        <div class="calc-input">
+            <label>عدد الأسماك</label>
+            <input type="number" id="fishCount" placeholder="مثال: 1000">
+        </div>
+        <div class="calc-input">
+            <label>متوسط وزن السمكة (جرام)</label>
+            <input type="number" id="fishWeight" placeholder="مثال: 100">
+        </div>
+        <div class="calc-input">
+            <label>نسبة الإطعام (%)</label>
+            <input type="number" id="feedingRate" value="3" step="0.5">
+        </div>
+        <button class="btn-primary" onclick="calculateFeed()" style="width:100%">احسب الكمية</button>
+        <div class="calc-result" id="calcResult">
+            الكمية المطلوبة يوميًا: --- كجم
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">نصائح ذهبية</h2>
+    <div class="carousel-container" style="position:relative">
+        <button class="carousel-btn carousel-prev" onclick="prevTip()"><i class="fas fa-chevron-right"></i></button>
+        <div class="carousel-track" id="tipTrack">
+            <div class="carousel-card"><div style="background:var(--white); padding:2rem; border-radius:20px; text-align:center"><i class="fas fa-water fa-3x" style="color:var(--accent)"></i><h3>جودة المياه</h3><p>أكسجين 4+ ملجم/لتر، حرارة 25-30°م</p></div></div>
+            <div class="carousel-card"><div style="background:var(--white); padding:2rem; border-radius:20px; text-align:center"><i class="fas fa-utensils fa-3x" style="color:var(--accent)"></i><h3>التغذية الصحيحة</h3><p>قسّم الكمية على وجبات متعددة</p></div></div>
+            <div class="carousel-card"><div style="background:var(--white); padding:2rem; border-radius:20px; text-align:center"><i class="fas fa-box fa-3x" style="color:var(--accent)"></i><h3>تخزين العلف</h3><p>مكان جاف بعيد عن الشمس</p></div></div>
+            <div class="carousel-card"><div style="background:var(--white); padding:2rem; border-radius:20px; text-align:center"><i class="fas fa-chart-line fa-3x" style="color:var(--accent)"></i><h3>معدل التحويل FCR</h3><p>استهدف 1.2 - 1.6</p></div></div>
+        </div>
+        <button class="carousel-btn carousel-next" onclick="nextTip()"><i class="fas fa-chevron-left"></i></button>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
+    <div class="testimonials-grid">
+        <div class="testimonial-card"><div class="testimonial-avatar"><i class="fas fa-user fa-2x"></i></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"معدل التحويل 1.4 فقط، وأسماكي وصلت وزن التسويق قبل الموعد"</p><strong>أبو علي - درعا</strong></div>
+        <div class="testimonial-card"><div class="testimonial-avatar"><i class="fas fa-user-graduate fa-2x"></i></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><p>"جودة ثابتة ودعم فني ممتاز"</p><strong>المهندس خالد - اللاذقية</strong></div>
+        <div class="testimonial-card"><div class="testimonial-avatar"><i class="fas fa-tractor fa-2x"></i></div><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><p>"أفضل علف استخدمته خلال 10 سنوات"</p><strong>مروان الخطيب - طرطوس</strong></div>
+    </div>
+</section>
+
+<!-- Blog Section -->
+<section id="blog" class="section">
+    <h2 class="section-title">📝 مدونتنا</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">نصائح وإرشادات من خبرائك لتحقيق أفضل إنتاجية</p>
+    <div class="blog-grid" id="blogGrid">
+        <!-- ستظهر المقالات ديناميكياً عبر JavaScript -->
+    </div>
+</section>
+
+<section id="contact" class="section">
+    <h2 class="section-title">📞 تواصل معنا</h2>
+    <div class="contact-container">
+        <div class="contact-info">
+            <p><i class="fas fa-phone-alt"></i> <strong>الهاتف / واتساب:</strong><br> <a href="tel:0963993716837" style="direction:ltr; font-size:1.1rem;">0963 993 716 837</a></p>
+            <p><i class="fas fa-envelope"></i> <strong>قسم المبيعات:</strong><br> <a href="mailto:sales.syrianunitedfeed@gmail.com">sales.syrianunitedfeed@gmail.com</a></p>
+            <p><i class="fas fa-headset"></i> <strong>قسم الدعم الفني:</strong><br> <a href="mailto:support.syrianunitedfeed@gmail.com">support.syrianunitedfeed@gmail.com</a></p>
+            <p><i class="fas fa-globe"></i> <strong>البريد العام:</strong><br> <a href="mailto:info.syrianunitedfeed@gmail.com">info.syrianunitedfeed@gmail.com</a></p>
+            <p><i class="fas fa-map-marker-alt"></i> <strong>العنوان:</strong> إدلب - سلقين</p>
+            <p><i class="fas fa-clock"></i> <strong>ساعات العمل:</strong> 8 صباحًا - 6 مساءً</p>
+        </div>
+        <form id="contactForm">
+            <input type="text" placeholder="الاسم الكامل" required>
+            <input type="tel" placeholder="رقم الهاتف" required>
+            <input type="email" placeholder="البريد الإلكتروني">
+            <input type="text" placeholder="اسم المزرعة (اختياري)">
+            <select>
+                <option value="">نوع الاستفسار</option>
+                <option value="sales">استفسار مبيعات</option>
+                <option value="support">دعم فني</option>
+                <option value="general">استفسار عام</option>
+            </select>
+            <textarea rows="3" placeholder="رسالتك"></textarea>
+            <button type="submit" class="btn-primary" style="width:100%">إرسال الطلب</button>
+        </form>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">❓ أسئلة شائعة</h2>
+    <div class="faq-item"><div class="faq-question">ما مناطق التوصيل؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">نغطي جميع المحافظات السورية.</div></div>
+    <div class="faq-item"><div class="faq-question">كيف أتأكد من جودة العلف؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">نوفر شهادات تحليل لكل شحنة وفريق فني متاح للإجابة عن استفساراتك.</div></div>
+    <div class="faq-item"><div class="faq-question">هل تقدمون خدمة ما بعد البيع؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">نعم، فريقنا يتابع معك حتى ترى النتائج ويقدم استشارات مجانية.</div></div>
+    <div class="faq-item"><div class="faq-question">لمن أتوجه للاستفسار عن الأسعار؟ <i class="fas fa-chevron-down"></i></div><div class="faq-answer">يمكنك التواصل مع قسم المبيعات عبر البريد الإلكتروني أو الاتصال على الرقم: 0963 993 716 837</div></div>
+</section>
+
+<footer>
+    <p><strong>السورية المتحدة للأعلاف</strong><br>شريكك في تحقيق أعلى إنتاجية بأقل التكاليف</p>
+    <p style="margin-top: 1rem;">📞 0963 993 716 837 | 📧 info.syrianunitedfeed@gmail.com</p>
+    <p>📍 إدلب - سلقين</p>
+    <p style="margin-top: 1rem;">© 2025 السورية المتحدة للأعلاف. جميع الحقوق محفوظة</p>
+</footer>
+
+<div class="bottom-bar">
+    <a href="#home"><i class="fas fa-home"></i><br>الرئيسية</a>
+    <a href="#products"><i class="fas fa-fish"></i><br>المنتجات</a>
+    <a href="#blog"><i class="fas fa-blog"></i><br>المدونة</a>
+    <a href="#contact"><i class="fas fa-phone"></i><br>اتصل</a>
+</div>
+
+<!-- Product Modal -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <div class="modal-close" onclick="closeProductModal()"><i class="fas fa-times"></i></div>
+        <h3 id="modalTitle"></h3>
+        <p id="modalDesc"></p>
+        <button class="btn-primary" style="margin-top:1rem" onclick="closeProductModal()">إغلاق</button>
+    </div>
+</div>
+
+<script>
+    // ================ بيانات المدونة ================
+    const blogPosts = [
+        {
+            id: 1,
+            title: "أفضل ممارسات تغذية البلطي",
+            excerpt: "نصائح عملية لزيادة الإنتاجية وتقليل التكاليف في مزارع البلطي...",
+            icon: "fas fa-fish",
+            date: "25 مارس 2025",
+            readTime: "5 دقائق",
+            fullContent: `تغذية البلطي تعتبر من أهم العوامل المؤثرة في نجاح المزرعة. إليك أبرز النصائح:
+            
+📍 اختر العلف المناسب حسب مرحلة النمو:
+• علف بادئ (بروتين 45-48%) للزريعة
+• علف نمو (بروتين 32-38%) للتسمين
+
+📍 قسم الكمية اليومية على 3-4 وجبات متساوية
+
+📍 راقب درجة حرارة الماء (25-30°م هي الدرجة المثالية)
+
+📍 استخدم علف بجودة ثابتة مثل منتجات السورية المتحدة للأعلاف
+
+📍 راقب معدل التحويل الغذائي (FCR) واستهدف 1.2-1.6
+
+📞 للاستشارات المجانية، تواصل مع فريق الدعم الفني.`
+        },
+        {
+            id: 2,
+            title: "كيف تقلل النفوق في فصل الصيف",
+            excerpt: "استراتيجيات فعالة لحماية أسماكك من ارتفاع درجات الحرارة...",
+            icon: "fas fa-temperature-high",
+            date: "20 مارس 2025",
+            readTime: "4 دقائق",
+            fullContent: `ارتفاع درجة الحرارة في الصيف قد يسبب نفوق الأسماك. إليك الحلول الفعالة:
+
+🔥 المشكلة: عندما ترتفع حرارة الماء فوق 32°م، تقل نسبة الأكسجين المذاب وتزيد نسبة الأمونيا.
+
+✅ الحلول:
+1. زيادة تهوية الأحواض باستخدام مراوح إضافية
+2. تقليل كمية العلف إلى 50% عند ارتفاع الحرارة
+3. إضافة مظلات أو شبكات ظل لتقليل أشعة الشمس المباشرة
+4. مراقبة نسبة الأكسجين المذاب يومياً (يجب ألا تقل عن 4 ملجم/لتر)
+5. استخدام أعلاف مدعمة بفيتامين C لتعزيز المناعة
+
+🌡️ تذكر: درجة الحرارة المثالية للبلطي هي 25-30°م.`
+        },
+        {
+            id: 3,
+            title: "اختيار العلف المناسب حسب نوع السمكة",
+            excerpt: "دليل شامل لأنواع الأعلاف ومتطلبات كل نوع من الأسماك...",
+            icon: "fas fa-chart-bar",
+            date: "15 مارس 2025",
+            readTime: "6 دقائق",
+            fullContent: `كل نوع من الأسماك له احتياجات غذائية مختلفة:
+
+🐟 البلطي:
+• بروتين: 28-32%
+• دهون: 5-7%
+• حجم الحبيبات: 2-4 مم للتسمين
+
+🐠 القاروس (الدنيس):
+• بروتين: 40-45%
+• دهون: 8-12%
+• حجم الحبيبات: 3-5 مم
+
+🐡 الكارب:
+• بروتين: 30-35%
+• دهون: 6-8%
+• حجم الحبيبات: 3-6 مم
+
+💡 نصيحة مهمة:
+اختر العلف حسب مرحلة النمو:
+- زريعة: بروتين عالي (45%+)
+- تسمين: بروتين متوسط (32-38%)
+- أمهات: بروتين عالي + فيتامينات خاصة
+
+📞 للاستشارات المجانية، تواصل مع قسم الدعم الفني: support.syrianunitedfeed@gmail.com`
+        }
+    ];
+
+    // ================ عرض المدونة ================
+    function renderBlog() {
+        const blogGrid = document.getElementById('blogGrid');
+        if (!blogGrid) return;
+        
+        blogGrid.innerHTML = '';
+        
+        blogPosts.forEach(post => {
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <div class="blog-image">
+                    <i class="${post.icon} fa-3x"></i>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span><i class="fas fa-calendar"></i> ${post.date}</span>
+                        <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+                    </div>
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt}</p>
+                    <button class="read-more" onclick="openBlogModal(${post.id})">
+                        اقرأ المزيد <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+            `;
+            blogGrid.appendChild(blogCard);
+        });
+    }
+
+    // ================ فتح نافذة المقال ================
+    function openBlogModal(postId) {
+        const post = blogPosts.find(p => p.id === postId);
+        if (!post) return;
+        
+        const modal = document.createElement('div');
+        modal.className = 'blog-modal';
+        modal.innerHTML = `
+            <div class="blog-modal-content">
+                <button class="blog-modal-close" onclick="this.closest('.blog-modal').remove()">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div style="text-align: center; margin-bottom: 1rem;">
+                    <i class="${post.icon} fa-3x" style="color: var(--accent);"></i>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 0.5rem; text-align: center;">${post.title}</h2>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; font-size: 0.85rem; color: var(--gray);">
+                    <span><i class="fas fa-calendar"></i> ${post.date}</span>
+                    <span><i class="fas fa-clock"></i> ${post.readTime}</span>
+                </div>
+                <div style="white-space: pre-line; line-height: 1.8;">
+                    ${post.fullContent.replace(/\n/g, '<br>')}
+                </div>
+                <div style="margin-top: 2rem; text-align: center;">
+                    <button onclick="this.closest('.blog-modal').remove(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-primary" style="padding: 10px 25px;">
+                        <i class="fas fa-comment"></i> تواصل مع خبير
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(modal);
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) modal.remove();
+        });
+    }
+
+    // ================ منتجات ================
+    function openProductModal(type) {
+        const modal = document.getElementById('productModal');
+        const title = document.getElementById('modalTitle');
+        const desc = document.getElementById('modalDesc');
+        
+        if(type === 'بادئ') {
+            title.innerText = 'علف البادئ';
+            desc.innerText = 'بروتين 45-48%، دهون 12-15%، حجم 0.5-1.5 مم. مناسب للزريعة من أول يوم. يحتوي على فيتامينات لتعزيز المناعة. طريقة الإطعام: 5-6 وجبات يوميًا.';
+        } else if(type === 'نمو') {
+            title.innerText = 'علف النمو';
+            desc.innerText = 'بروتين 32-38%، دهون 6-8%، حجم 2-4 مم. مناسب للتسمين السريع. يحتوي على إنزيمات هاضمة لتحسين الامتصاص. طريقة الإطعام: 3-4 وجبات، 3-5% من وزن الأسماك.';
+        } else {
+            title.innerText = 'علف الأمهات';
+            desc.innerText = 'بروتين 38-42%، دهون 8-10%، حجم 3-5 مم. مدعم بأوميغا 3 وفيتامين E لتحسين جودة البيض ونسبة الفقس.';
+        }
+        modal.classList.add('active');
+    }
+    
+    function closeProductModal() {
+        document.getElementById('productModal').classList.remove('active');
+    }
+    
+    // ================ حاسبة العلف ================
+    function calculateFeed() {
+        let count = parseFloat(document.getElementById('fishCount').value) || 0;
+        let weight = parseFloat(document.getElementById('fishWeight').value) || 0;
+        let rate = parseFloat(document.getElementById('feedingRate').value) || 3;
+        let totalWeight = (count * weight) / 1000;
+        let dailyFeed = (totalWeight * rate) / 100;
+        document.getElementById('calcResult').innerHTML = `الكمية المطلوبة يوميًا: ${dailyFeed.toFixed(2)} كجم`;
+    }
+    
+    // ================ Carousel Tips ================
+    let tipIndex = 0;
+    const tipTrack = document.getElementById('tipTrack');
+    const tipCards = document.querySelectorAll('.carousel-card');
+    
+    function updateTipCarousel() {
+        if(tipTrack) tipTrack.style.transform = `translateX(-${tipIndex * 100}%)`;
+    }
+    
+    function nextTip() {
+        if(tipIndex < tipCards.length - 1) tipIndex++;
+        else tipIndex = 0;
+        updateTipCarousel();
+    }
+    
+    function prevTip() {
+        if(tipIndex > 0) tipIndex--;
+        else tipIndex = tipCards.length - 1;
+        updateTipCarousel();
+    }
+    
+    // ================ FAQ Accordion ================
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => {
+            q.parentElement.classList.toggle('active');
+        });
+    });
+    
+    // ================ نموذج التواصل ================
+    document.getElementById('contactForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('✅ شكراً لتواصلك! سنرد عليك في أقرب وقت.');
+        e.target.reset();
+    });
+    
+    // ================ Dark Mode ================
+    const darkToggle = document.getElementById('darkModeToggle');
+    darkToggle.addEventListener('click', () => {
+        const currentTheme = document.body.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            document.body.removeAttribute('data-theme');
+            darkToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        } else {
+            document.body.setAttribute('data-theme', 'dark');
+            darkToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+    });
+    
+    // ================ Progress Bar ================
+    window.addEventListener('scroll', () => {
+        const winScroll = document.documentElement.scrollTop;
+        const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const scrolled = (winScroll / height) * 100;
+        const progressBar = document.getElementById('progressBar');
+        if(progressBar) progressBar.style.width = scrolled + '%';
+        
+        const navbar = document.getElementById('navbar');
+        if(window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+    });
+    
+    // ================ Smooth Scroll ================
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
+    
+    // ================ Auto Slide Tips ================
+    setInterval(() => { nextTip(); }, 5000);
+    
+    // ================ تهيئة الصفحة ================
+    document.addEventListener('DOMContentLoaded', () => {
+        renderBlog();
+    });
+</script>
+</body>
+</html>
