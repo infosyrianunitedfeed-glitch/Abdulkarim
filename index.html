@@ -21,7 +21,6 @@
             line-height: 1.6;
         }
 
-        /* شريط التنقل */
         .navbar {
             background: #0f4c2c;
             padding: 1rem 2rem;
@@ -69,7 +68,6 @@
             color: #ffd966;
         }
 
-        /* الهيرو */
         .hero {
             background: linear-gradient(135deg, #0f4c2c, #1e6e3e);
             color: white;
@@ -132,7 +130,6 @@
             box-shadow: 0 5px 15px rgba(255,140,66,0.4);
         }
 
-        /* الأقسام */
         .section {
             padding: 60px 20px;
             max-width: 1200px;
@@ -156,7 +153,6 @@
             border-radius: 3px;
         }
 
-        /* المنتجات */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -199,7 +195,6 @@
             margin-top: 0.5rem;
         }
 
-        /* شهادات */
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -232,7 +227,6 @@
             margin: 0.5rem 0;
         }
 
-        /* التواصل */
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -276,7 +270,6 @@
             border-color: #ff8c42;
         }
 
-        /* أسئلة شائعة */
         .faq-item {
             background: white;
             border-radius: 12px;
@@ -306,7 +299,6 @@
             padding-bottom: 1rem;
         }
 
-        /* تذييل */
         footer {
             background: #0f4c2c;
             color: white;
@@ -320,7 +312,6 @@
             text-decoration: none;
         }
 
-        /* موبايل */
         @media (max-width: 768px) {
             .navbar-content {
                 flex-direction: column;
@@ -356,10 +347,9 @@
         <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
             <i class="fas fa-phone-alt"></i> تواصل معنا
         </button>
-        <button class=<a href="catalog.html" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-block;">
-    <i class="fas fa-book-open"></i> الكتالوج العلمي
-</a>
-        </button>
+        <a href="https://infosyrianunitedfeed-glitch.github.io/Abdulkarim/catalog.html" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-block;">
+            <i class="fas fa-book-open"></i> الكتالوج العلمي
+        </a>
     </div>
 </section>
 
@@ -460,14 +450,12 @@
 </footer>
 
 <script>
-    // FAQ Accordion
     document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', () => {
             q.parentElement.classList.toggle('active');
         });
     });
 
-    // نموذج التواصل
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
         alert('✅ شكراً لتواصلك! سنرد عليك في أقرب وقت.');
