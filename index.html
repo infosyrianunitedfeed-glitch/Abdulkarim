@@ -312,6 +312,58 @@
             text-decoration: none;
         }
 
+        /* نافذة منبثقة للكتالوج */
+        .catalog-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .catalog-modal.active {
+            display: flex;
+        }
+
+        .catalog-modal-content {
+            background: white;
+            width: 90%;
+            max-width: 900px;
+            height: 80%;
+            border-radius: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .catalog-modal-header {
+            background: #0f4c2c;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .catalog-modal-header button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .catalog-modal-body {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1.5rem;
+        }
+
         @media (max-width: 768px) {
             .navbar-content {
                 flex-direction: column;
@@ -347,9 +399,9 @@
         <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
             <i class="fas fa-phone-alt"></i> تواصل معنا
         </button>
-        <a href="https://infosyrianunitedfeed-glitch.github.io/Abdulkarim/catalog.html" target="_blank" class="btn-secondary" style="text-decoration: none; display: inline-block;">
+        <button class="btn-secondary" id="openCatalogBtn">
             <i class="fas fa-book-open"></i> الكتالوج العلمي
-        </a>
+        </button>
     </div>
 </section>
 
@@ -437,7 +489,7 @@
         <div class="faq-answer">نوفر شهادات تحليل لكل شحنة وفريق فني متاح للإجابة عن استفساراتك.</div>
     </div>
     <div class="faq-item">
-        <div class="faq-question">هل تقدمون خدمة ما بعد البيع؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question">هل تقدمون خدمة ما بعد البيع？ <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">نعم، فريقنا يتابع معك حتى ترى النتائج ويقدم استشارات مجانية.</div>
     </div>
 </section>
@@ -449,17 +501,82 @@
     <p>© 2025 جميع الحقوق محفوظة</p>
 </footer>
 
+<!-- نافذة منبثقة للكتالوج -->
+<div class="catalog-modal" id="catalogModal">
+    <div class="catalog-modal-content">
+        <div class="catalog-modal-header">
+            <h3><i class="fas fa-book"></i> الكتالوج العلمي</h3>
+            <button id="closeCatalogModal"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="catalog-modal-body" id="catalogModalBody">
+            <!-- محتوى الكتالوج سيتم تحميله هنا -->
+            <div style="text-align: center; padding: 50px;">
+                <i class="fas fa-spinner fa-spin fa-3x" style="color: #ff8c42;"></i>
+                <p>جاري تحميل الكتالوج...</p>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
+    // FAQ
     document.querySelectorAll('.faq-question').forEach(q => {
         q.addEventListener('click', () => {
             q.parentElement.classList.toggle('active');
         });
     });
 
+    // نموذج التواصل
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
         alert('✅ شكراً لتواصلك! سنرد عليك في أقرب وقت.');
         e.target.reset();
+    });
+
+    // نافذة الكتالوج المنبثقة
+    const catalogModal = document.getElementById('catalogModal');
+    const openCatalogBtn = document.getElementById('openCatalogBtn');
+    const closeCatalogModal = document.getElementById('closeCatalogModal');
+    const catalogModalBody = document.getElementById('catalogModalBody');
+
+    // فتح النافذة وتحميل محتوى الكتالوج
+    openCatalogBtn.addEventListener('click', async () => {
+        catalogModal.classList.add('active');
+        
+        // تحميل محتوى الكتالوج من الملف
+        try {
+            const response = await fetch('catalog.html');
+            const html = await response.text();
+            
+            // استخراج محتوى الكتالوج (إزالة الهيكل الخارجي)
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const catalogContent = doc.querySelector('.catalog') || doc.body;
+            
+            catalogModalBody.innerHTML = catalogContent.innerHTML;
+        } catch (error) {
+            catalogModalBody.innerHTML = `
+                <div style="text-align: center; padding: 50px;">
+                    <i class="fas fa-exclamation-circle fa-3x" style="color: #ff8c42;"></i>
+                    <p>حدث خطأ في تحميل الكتالوج</p>
+                    <button onclick="window.open('catalog.html', '_blank')" class="btn-primary" style="margin-top: 20px;">
+                        فتح الكتالوج في صفحة جديدة
+                    </button>
+                </div>
+            `;
+        }
+    });
+
+    // إغلاق النافذة
+    closeCatalogModal.addEventListener('click', () => {
+        catalogModal.classList.remove('active');
+    });
+
+    // إغلاق عند الضغط خارج النافذة
+    catalogModal.addEventListener('click', (e) => {
+        if (e.target === catalogModal) {
+            catalogModal.classList.remove('active');
+        }
     });
 </script>
 
