@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>السورية المتحدة للأعلاف | جودة تصنع الفرق</title>
+    <title>السورية المتحدة للأعلاف | رائدة صناعة أعلاف الأسماك في سوريا</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -153,6 +153,22 @@
             border-radius: 3px;
         }
 
+        .trust-bar {
+            background: white;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #ff8c42;
+        }
+
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -195,6 +211,61 @@
             margin-top: 0.5rem;
         }
 
+        .calculator {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .calc-input {
+            margin-bottom: 1rem;
+        }
+
+        .calc-input label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .calc-input input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        .calc-result {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #0f4c2c;
+            color: white;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .tip-card i {
+            font-size: 2rem;
+            color: #ff8c42;
+            margin-bottom: 1rem;
+        }
+
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -227,6 +298,105 @@
             margin: 0.5rem 0;
         }
 
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .blog-image {
+            height: 180px;
+            background: linear-gradient(135deg, #0f4c2c, #1e6e3e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .blog-content {
+            padding: 1.5rem;
+        }
+
+        .blog-content h3 {
+            color: #0f4c2c;
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        .read-more {
+            background: none;
+            border: none;
+            color: #ff8c42;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            color: #e6732e;
+            transform: translateX(-5px);
+        }
+
+        .blog-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.85);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .blog-modal-content {
+            background: white;
+            max-width: 700px;
+            width: 90%;
+            border-radius: 25px;
+            padding: 2rem;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: fadeInUp 0.4s ease;
+        }
+
+        .blog-modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
         .contact-container {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -256,7 +426,7 @@
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
-        input, textarea {
+        input, textarea, select {
             width: 100%;
             padding: 12px;
             margin-bottom: 1rem;
@@ -265,7 +435,7 @@
             font-family: inherit;
         }
 
-        input:focus, textarea:focus {
+        input:focus, textarea:focus, select:focus {
             outline: none;
             border-color: #ff8c42;
         }
@@ -307,12 +477,6 @@
             margin-top: 2rem;
         }
 
-        footer a {
-            color: #ffd966;
-            text-decoration: none;
-        }
-
-        /* نافذة منبثقة للكتالوج */
         .catalog-modal {
             display: none;
             position: fixed;
@@ -364,6 +528,33 @@
             padding: 1.5rem;
         }
 
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: scale(1.02);
+        }
+        .phone-link {
+            direction: ltr;
+            font-size: 1.1rem;
+            text-decoration: none;
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @media (max-width: 768px) {
             .navbar-content {
                 flex-direction: column;
@@ -387,6 +578,8 @@
             <li><a href="#home">الرئيسية</a></li>
             <li><a href="#about">عن الشركة</a></li>
             <li><a href="#products">منتجاتنا</a></li>
+            <li><a href="#calculator">حاسبة العلف</a></li>
+            <li><a href="#blog">المدونة</a></li>
             <li><a href="#contact">اتصل بنا</a></li>
         </ul>
     </div>
@@ -404,6 +597,13 @@
         </button>
     </div>
 </section>
+
+<div class="trust-bar">
+    <div><div class="stat-number">200+</div><div>مزرعة تثق بنا</div></div>
+    <div><div class="stat-number">10+</div><div>سنوات خبرة</div></div>
+    <div><div class="stat-number">5000+</div><div>طن سنويًا</div></div>
+    <div><div class="stat-number">98%</div><div>رضا العملاء</div></div>
+</div>
 
 <section id="about" class="section">
     <h2 class="section-title">من نحن؟</h2>
@@ -439,6 +639,38 @@
     </div>
 </section>
 
+<section id="calculator" class="section">
+    <h2 class="section-title">📊 حاسبة العلف</h2>
+    <div class="calculator">
+        <div class="calc-input">
+            <label>عدد الأسماك</label>
+            <input type="number" id="fishCount" placeholder="مثال: 1000">
+        </div>
+        <div class="calc-input">
+            <label>متوسط وزن السمكة (جرام)</label>
+            <input type="number" id="fishWeight" placeholder="مثال: 100">
+        </div>
+        <div class="calc-input">
+            <label>نسبة الإطعام (%)</label>
+            <input type="number" id="feedingRate" value="3" step="0.5">
+        </div>
+        <button class="btn-primary" onclick="calculateFeed()" style="width:100%">احسب الكمية</button>
+        <div class="calc-result" id="calcResult">
+            الكمية المطلوبة يوميًا: --- كجم
+        </div>
+    </div>
+</section>
+
+<section class="section">
+    <h2 class="section-title">💡 نصائح ذهبية للمربين</h2>
+    <div class="tips-grid">
+        <div class="tip-card"><i class="fas fa-water"></i><h3>جودة المياه</h3><p>أكسجين 4+ ملجم/لتر، حرارة 25-30°م</p></div>
+        <div class="tip-card"><i class="fas fa-utensils"></i><h3>التغذية الصحيحة</h3><p>قسّم الكمية على وجبات متعددة</p></div>
+        <div class="tip-card"><i class="fas fa-box"></i><h3>تخزين العلف</h3><p>مكان جاف بعيد عن الشمس</p></div>
+        <div class="tip-card"><i class="fas fa-chart-line"></i><h3>معدل التحويل FCR</h3><p>استهدف 1.2 - 1.6</p></div>
+    </div>
+</section>
+
 <section class="section">
     <h2 class="section-title">ماذا يقول عملاؤنا؟</h2>
     <div class="testimonials-grid">
@@ -454,14 +686,32 @@
             <p>"جودة ثابتة ودعم فني ممتاز"</p>
             <strong>المهندس خالد - اللاذقية</strong>
         </div>
+        <div class="testimonial-card">
+            <div class="testimonial-avatar"><i class="fas fa-tractor"></i></div>
+            <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+            <p>"أفضل علف استخدمته خلال 10 سنوات"</p>
+            <strong>مروان الخطيب - طرطوس</strong>
+        </div>
     </div>
+</section>
+
+<!-- المدونة -->
+<section id="blog" class="section">
+    <h2 class="section-title">📝 مدونتنا</h2>
+    <p style="text-align: center; margin-bottom: 2rem;">نصائح وإرشادات من خبرائك لتحقيق أفضل إنتاجية</p>
+    <div class="blog-grid" id="blogGrid"></div>
 </section>
 
 <section id="contact" class="section">
     <h2 class="section-title">📞 تواصل معنا</h2>
     <div class="contact-container">
         <div class="contact-info">
-            <p><i class="fas fa-phone-alt"></i> <strong>الهاتف / واتساب:</strong><br> <a href="tel:0963993716837" style="direction:ltr; font-size:1.1rem;">0963 993 716 837</a></p>
+            <p><i class="fas fa-phone-alt"></i> <strong>الهاتف / واتساب:</strong><br> 
+                <a href="tel:0963993716837" class="phone-link">837 716 993 0963</a>
+                <a href="https://wa.me/963993716837?text=أهلاً%20بكم%20أرغب%20بمعلومات%20عن%20منتجاتكم" target="_blank" class="whatsapp-btn">
+                    <i class="fab fa-whatsapp"></i> واتساب
+                </a>
+            </p>
             <p><i class="fas fa-envelope"></i> <strong>قسم المبيعات:</strong><br> <a href="mailto:sales.syrianunitedfeed@gmail.com">sales.syrianunitedfeed@gmail.com</a></p>
             <p><i class="fas fa-headset"></i> <strong>قسم الدعم الفني:</strong><br> <a href="mailto:support.syrianunitedfeed@gmail.com">support.syrianunitedfeed@gmail.com</a></p>
             <p><i class="fas fa-globe"></i> <strong>البريد العام:</strong><br> <a href="mailto:info.syrianunitedfeed@gmail.com">info.syrianunitedfeed@gmail.com</a></p>
@@ -472,6 +722,13 @@
             <input type="text" placeholder="الاسم الكامل" required>
             <input type="tel" placeholder="رقم الهاتف" required>
             <input type="email" placeholder="البريد الإلكتروني">
+            <input type="text" placeholder="اسم المزرعة (اختياري)">
+            <select>
+                <option value="">نوع الاستفسار</option>
+                <option value="sales">استفسار مبيعات</option>
+                <option value="support">دعم فني</option>
+                <option value="general">استفسار عام</option>
+            </select>
             <textarea rows="3" placeholder="رسالتك"></textarea>
             <button type="submit" class="btn-primary" style="width:100%">إرسال الطلب</button>
         </form>
@@ -489,19 +746,29 @@
         <div class="faq-answer">نوفر شهادات تحليل لكل شحنة وفريق فني متاح للإجابة عن استفساراتك.</div>
     </div>
     <div class="faq-item">
-        <div class="faq-question">هل تقدمون خدمة ما بعد البيع？ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-question">هل تقدمون خدمة ما بعد البيع؟ <i class="fas fa-chevron-down"></i></div>
         <div class="faq-answer">نعم، فريقنا يتابع معك حتى ترى النتائج ويقدم استشارات مجانية.</div>
+    </div>
+    <div class="faq-item">
+        <div class="faq-question">لمن أتوجه للاستفسار عن الأسعار؟ <i class="fas fa-chevron-down"></i></div>
+        <div class="faq-answer">يمكنك التواصل مع قسم المبيعات عبر البريد الإلكتروني أو الاتصال على الرقم: 
+            <a href="tel:0963993716837" style="direction:ltr; text-decoration: none;">837 716 993 0963</a> 
+            أو عبر <a href="https://wa.me/963993716837?text=أهلاً%20بكم%20أرغب%20بمعلومات%20عن%20منتجاتكم" target="_blank">واتساب</a>
+        </div>
     </div>
 </section>
 
 <footer>
     <p><strong>السورية المتحدة للأعلاف</strong><br>شريكك في تحقيق أعلى إنتاجية بأقل التكاليف</p>
-    <p style="margin-top: 1rem;">📞 0963 993 716 837 | 📧 info.syrianunitedfeed@gmail.com</p>
+    <p style="margin-top: 1rem;">
+        📞 <a href="tel:0963993716837" style="color: #ffd966; text-decoration: none; direction: ltr;">837 716 993 0963</a> 
+        | <a href="https://wa.me/963993716837?text=أهلاً%20بكم%20أرغب%20بمعلومات%20عن%20منتجاتكم" target="_blank" style="color: #ffd966; text-decoration: none;"><i class="fab fa-whatsapp"></i> واتساب</a> 
+        | 📧 info.syrianunitedfeed@gmail.com
+    </p>
     <p>📍 إدلب - سلقين</p>
     <p>© 2025 جميع الحقوق محفوظة</p>
 </footer>
 
-<!-- نافذة منبثقة للكتالوج -->
 <div class="catalog-modal" id="catalogModal">
     <div class="catalog-modal-content">
         <div class="catalog-modal-header">
@@ -509,7 +776,6 @@
             <button id="closeCatalogModal"><i class="fas fa-times"></i></button>
         </div>
         <div class="catalog-modal-body" id="catalogModalBody">
-            <!-- محتوى الكتالوج سيتم تحميله هنا -->
             <div style="text-align: center; padding: 50px;">
                 <i class="fas fa-spinner fa-spin fa-3x" style="color: #ff8c42;"></i>
                 <p>جاري تحميل الكتالوج...</p>
@@ -519,65 +785,118 @@
 </div>
 
 <script>
-    // FAQ
-    document.querySelectorAll('.faq-question').forEach(q => {
-        q.addEventListener('click', () => {
-            q.parentElement.classList.toggle('active');
+    // بيانات المدونة
+    const blogPosts = [
+        {
+            id: 1,
+            title: "أفضل ممارسات تغذية البلطي",
+            excerpt: "نصائح عملية لزيادة الإنتاجية وتقليل التكاليف في مزارع البلطي...",
+            icon: "fas fa-fish",
+            date: "25 مارس 2025",
+            readTime: "5 دقائق",
+            fullContent: `🍽️ <strong>أفضل ممارسات تغذية البلطي</strong><br><br>📌 اختر العلف المناسب حسب مرحلة النمو<br>• علف بادئ (بروتين 45-48%) للزريعة<br>• علف نمو (بروتين 32-38%) للتسمين<br>• علف إنتاج (بروتين 38-42%) للأمهات<br><br>📌 توقيت التغذية: قسّم الكمية على 3-4 وجبات، أفضل الأوقات الصباح الباكر وقبل الغروب<br><br>📌 نسبة الإطعام: الزريعة 8-12%، الإصبعيات 5-7%، التسمين 3-5% من وزن الأسماك<br><br>📞 للاستشارات: support.syrianunitedfeed@gmail.com`
+        },
+        {
+            id: 2,
+            title: "كيف تقلل النفوق في فصل الصيف",
+            excerpt: "استراتيجيات فعالة لحماية أسماكك من ارتفاع درجات الحرارة...",
+            icon: "fas fa-temperature-high",
+            date: "20 مارس 2025",
+            readTime: "4 دقائق",
+            fullContent: `🌡️ <strong>كيف تقلل النفوق في فصل الصيف</strong><br><br>✅ زيادة التهوية بإضافة مراوح أو مضخات هواء<br>✅ تقليل كمية العلف إلى 50% عند ارتفاع الحرارة فوق 32°م<br>✅ تظليل الأحواض باستخدام شبكات الظل<br>✅ مراقبة الأكسجين المذاب يومياً (يجب ألا يقل عن 4 ملجم/لتر)<br>✅ إضافة فيتامين C للعلف لتعزيز المناعة<br><br>🌿 الوقاية خير من العلاج، استعد مبكراً لفصل الصيف.`
+        },
+        {
+            id: 3,
+            title: "اختيار العلف المناسب حسب نوع السمكة",
+            excerpt: "دليل شامل لأنواع الأعلاف ومتطلبات كل نوع من الأسماك...",
+            icon: "fas fa-chart-bar",
+            date: "15 مارس 2025",
+            readTime: "6 دقائق",
+            fullContent: `🐟 <strong>اختيار العلف المناسب حسب نوع السمكة</strong><br><br>🐠 البلطي: بروتين 28-32%، حجم 2-4 مم<br>🐟 القاروس: بروتين 40-45%، حجم 3-5 مم<br>🐡 الكارب: بروتين 30-35%، حجم 3-6 مم<br><br>💡 نصائح: اختر العلف حسب مرحلة النمو، وانتبه لحجم الحبيبات المناسب<br><br>📞 للاستشارات: support.syrianunitedfeed@gmail.com`
+        }
+    ];
+
+    function renderBlog() {
+        const blogGrid = document.getElementById('blogGrid');
+        if (!blogGrid) return;
+        blogGrid.innerHTML = '';
+        blogPosts.forEach(post => {
+            const blogCard = document.createElement('div');
+            blogCard.className = 'blog-card';
+            blogCard.innerHTML = `
+                <div class="blog-image"><i class="${post.icon} fa-3x"></i></div>
+                <div class="blog-content">
+                    <div class="blog-meta"><span><i class="fas fa-calendar"></i> ${post.date}</span><span><i class="fas fa-clock"></i> ${post.readTime}</span></div>
+                    <h3>${post.title}</h3>
+                    <p>${post.excerpt}</p>
+                    <button class="read-more" onclick="openBlogModal(${post.id})">اقرأ المزيد <i class="fas fa-arrow-left"></i></button>
+                </div>
+            `;
+            blogGrid.appendChild(blogCard);
         });
+    }
+
+    function openBlogModal(postId) {
+        const post = blogPosts.find(p => p.id === postId);
+        if (!post) return;
+        const modal = document.createElement('div');
+        modal.className = 'blog-modal';
+        modal.innerHTML = `
+            <div class="blog-modal-content">
+                <button class="blog-modal-close" onclick="this.closest('.blog-modal').remove()"><i class="fas fa-times"></i></button>
+                <div style="text-align:center;"><i class="${post.icon} fa-3x" style="color:#ff8c42;"></i></div>
+                <h2 style="color:#0f4c2c; text-align:center;">${post.title}</h2>
+                <div style="text-align:center; margin:1rem 0;"><span><i class="fas fa-calendar"></i> ${post.date}</span> | <span><i class="fas fa-clock"></i> ${post.readTime}</span></div>
+                <div>${post.fullContent}</div>
+                <div style="margin-top:2rem; text-align:center;"><button onclick="this.closest('.blog-modal').remove(); document.getElementById('contact').scrollIntoView({behavior:'smooth'})" class="btn-primary">تواصل مع خبير</button></div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+        modal.addEventListener('click', (e) => { if (e.target === modal) modal.remove(); });
+    }
+
+    function calculateFeed() {
+        let count = parseFloat(document.getElementById('fishCount').value) || 0;
+        let weight = parseFloat(document.getElementById('fishWeight').value) || 0;
+        let rate = parseFloat(document.getElementById('feedingRate').value) || 3;
+        let totalWeight = (count * weight) / 1000;
+        let dailyFeed = (totalWeight * rate) / 100;
+        document.getElementById('calcResult').innerHTML = `الكمية المطلوبة يوميًا: ${dailyFeed.toFixed(2)} كجم`;
+    }
+
+    document.querySelectorAll('.faq-question').forEach(q => {
+        q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); });
     });
 
-    // نموذج التواصل
     document.getElementById('contactForm').addEventListener('submit', (e) => {
         e.preventDefault();
         alert('✅ شكراً لتواصلك! سنرد عليك في أقرب وقت.');
         e.target.reset();
     });
 
-    // نافذة الكتالوج المنبثقة
     const catalogModal = document.getElementById('catalogModal');
     const openCatalogBtn = document.getElementById('openCatalogBtn');
     const closeCatalogModal = document.getElementById('closeCatalogModal');
     const catalogModalBody = document.getElementById('catalogModalBody');
 
-    // فتح النافذة وتحميل محتوى الكتالوج
     openCatalogBtn.addEventListener('click', async () => {
         catalogModal.classList.add('active');
-        
-        // تحميل محتوى الكتالوج من الملف
         try {
             const response = await fetch('catalog.html');
             const html = await response.text();
-            
-            // استخراج محتوى الكتالوج (إزالة الهيكل الخارجي)
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, 'text/html');
             const catalogContent = doc.querySelector('.catalog') || doc.body;
-            
             catalogModalBody.innerHTML = catalogContent.innerHTML;
         } catch (error) {
-            catalogModalBody.innerHTML = `
-                <div style="text-align: center; padding: 50px;">
-                    <i class="fas fa-exclamation-circle fa-3x" style="color: #ff8c42;"></i>
-                    <p>حدث خطأ في تحميل الكتالوج</p>
-                    <button onclick="window.open('catalog.html', '_blank')" class="btn-primary" style="margin-top: 20px;">
-                        فتح الكتالوج في صفحة جديدة
-                    </button>
-                </div>
-            `;
+            catalogModalBody.innerHTML = `<div style="text-align:center;padding:50px;"><i class="fas fa-exclamation-circle fa-3x" style="color:#ff8c42;"></i><p>حدث خطأ في تحميل الكتالوج</p><button onclick="window.open('catalog.html', '_blank')" class="btn-primary">فتح الكتالوج في صفحة جديدة</button></div>`;
         }
     });
 
-    // إغلاق النافذة
-    closeCatalogModal.addEventListener('click', () => {
-        catalogModal.classList.remove('active');
-    });
+    closeCatalogModal.addEventListener('click', () => { catalogModal.classList.remove('active'); });
+    catalogModal.addEventListener('click', (e) => { if (e.target === catalogModal) catalogModal.classList.remove('active'); });
 
-    // إغلاق عند الضغط خارج النافذة
-    catalogModal.addEventListener('click', (e) => {
-        if (e.target === catalogModal) {
-            catalogModal.classList.remove('active');
-        }
-    });
+    document.addEventListener('DOMContentLoaded', () => { renderBlog(); });
 </script>
 
 </body>
